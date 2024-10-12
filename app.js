@@ -1,7 +1,6 @@
 const form = document.querySelector("#searchForm");
 const input = document.querySelector("input");
 const content = document.querySelector("#content");
-const breakTag = document.createElement("br");
 const body = document.querySelector("body");
 const search = document.querySelector("#search");
 const cngClr = document.querySelector("#cngClr");
@@ -43,18 +42,16 @@ search.addEventListener("click", async (e) => {
       content.appendChild(header);
       for (const d of data) {
         const meanings = d.meanings;
-        const para = document.createElement("p");
         for (const m of meanings) {
           const definitions = m.definitions;
           for (const d of definitions) {
+            const para = document.createElement("p");
             const def = d.definition;
             const span = document.createElement("span");
-            span.innerText = def;
-            para.appendChild(span);
-            para.appendChild(breakTag);
+            para.innerText = def;
+            content.appendChild(para);
           }
         }
-        content.appendChild(para);
       }
     } catch (error) {
       console.error(
